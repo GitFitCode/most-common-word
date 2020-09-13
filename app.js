@@ -6,13 +6,13 @@ const removePunctuation = text => {
 // Convert string of text into an array of individual words
 const splitText = text => {
     return text.split(' ');
-}
+};
 
 // Remove banned words from an array of words
 const removeBannedWords = (words, banned) => {
     const bannedWords = new Set(banned);
     return words.filter(word => !bannedWords.has(word));
-}
+};
 
 // Count the frequency of each word in an array of words
 const getWordCounts = words => {
@@ -27,7 +27,7 @@ const getWordCounts = words => {
     }
 
     return wordCounts;
-}
+};
 
 // Given an array of words with their respective frequencies, return
 // the word with the highest frequency
@@ -43,7 +43,7 @@ const getCommonWord = wordCounts => {
     }
 
     return commonWord;
-} 
+}; 
 
 /**
  * @param {string} paragraph
