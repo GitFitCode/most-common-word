@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="dom.js" defer></script>
+  <title>Most Common Word</title>
+</head>
+<body>
+  <section id="main-section">
+    <p>Please enter a paragraph and an optional banned word to find the most common word.</p>
+    <section class="sub-section">
+      <div>
+        <label>Paragraph:</label><br>
+        <textarea id="paragraph" name="paragraph" rows="5" cols="30"></textarea>
+      </div>
+      <div>
+        <label>Banned Word:</label><br>
+        <input id="banned"></input>
+      </div>
+    </section>
+    <section class="sub-section">
+      <div>
+        <button id="enter">Enter</button>
+      </div>
+    </section>
+    <div>
+      <br>
+      <label>Most Common Word:  </label><label id="mcw">MCW</label>
+    </div>
+  </section>  
+</body>
+</html>
