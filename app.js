@@ -19,7 +19,7 @@ const getWordCounts = (words) => {
   const wordCounts = {};
 
   for (let word of words) {
-    if (typeof wordCounts[word] === "number") {
+    if (wordCounts[word]) {
       wordCounts[word]++;
     } else {
       wordCounts[word] = 1;
