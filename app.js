@@ -28,7 +28,6 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         frequencyDict[key] = 1; 
       }
     }
-    //console.log("The values in the dictioanry are the following: ", frequencyDict); 
 
     //Identify the number of the maximum occurance of a word
     var max = 0;
@@ -38,9 +37,8 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         max = value;
       }
     }
-    //console.log("The maximum occurance of a word is: ")
 
-    //Parse dictionary to retrieve words of highest count 
+    //Parse dictionary to retrieve words of highest count based on max occurance  
     var wordsOfHighFrequency = []
 
     for(const [key, value] of Object.entries(frequencyDict)) {
@@ -59,11 +57,9 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
  */
 const mostCommonWord = (paragraph, banned) => {
   var noPunctuationParagraph = paragraph.toLowerCase().replace(/(!|;|'|,|\.|\?)/g,"").trim();
-  //console.log("The paragraph written in lowercase and without punctuation is the following: " ,noPunctuationParagraph);
 
   var wordsInPargrphArr = noPunctuationParagraph.split(" "); 
   wordsInPargrphArr = wordsInPargrphArr.filter(word => word != banned);
-  //console.log("The array of words in paragraph without the banned word is the following: ", wordsInPargrphArr); 
 
   //method retrieves the word with the highest frequency 
   const mostCommonWord = getWordsWithHighestFreq(wordsInPargrphArr);
