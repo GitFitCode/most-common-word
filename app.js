@@ -28,7 +28,7 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         frequencyDict[key] = 1; 
       }
     }
-    console.log("The values in the dictioanry are the following: ", frequencyDict); 
+    //console.log("The values in the dictioanry are the following: ", frequencyDict); 
 
     
     //Identify the number of the maximum occurance of a word
@@ -39,7 +39,7 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         max = value;
       }
     }
-    console.log("The maximum occurance of a word is: ", 2)
+    //console.log("The maximum occurance of a word is: ", 2)
 
     //Parse dictionary to retrieve words of highest count 
     var wordsOfHighFrequency = []
@@ -49,7 +49,6 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         wordsOfHighFrequency.push(key); 
       }
     }
-    console.log("The most common words are", wordsOfHighFrequency);
 
     return wordsOfHighFrequency; 
  }
@@ -61,16 +60,32 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
  */
 const mostCommonWord = (paragraph, banned) => {
   var noPunctuationParagraph = paragraph.toLowerCase().replace(/(!|;|'|,|\.|\?)/g,"").trim();
-  console.log("The paragraph written in lowercase and without punctuation is the following: " ,noPunctuationParagraph);
+  //console.log("The paragraph written in lowercase and without punctuation is the following: " ,noPunctuationParagraph);
 
   var wordsInPargrphArr = noPunctuationParagraph.split(" "); 
   wordsInPargrphArr = wordsInPargrphArr.filter(word => word != banned);
-  console.log("The array of words in paragraph without the banned word is the following: ", wordsInPargrphArr); 
+  //console.log("The array of words in paragraph without the banned word is the following: ", wordsInPargrphArr); 
 
   //method retrieves the word with the highest frequency 
   const mostCommonWord = getWordsWithHighestFreq(wordsInPargrphArr);
-  return mostCommonWord.values();
+  console.log("The most common words are: ");
+  for (var k = 0; k < mostCommonWord.length; k ++) { 
+    console.log(mostCommonWord[k]); 
+  }
 
 };
 
-mostCommonWord("THE CAT IS HERE, and dog is here?", "cat"); 
+//First Run Module: npm install prompt-sync
+function main() { 
+  const prompt = require('prompt-sync')();
+
+  const paragraph = prompt('Please enter a paragraph of your choice to find the most common word: ');
+  console.log(`The paragraph you entered is: ${paragraph}`);
+
+  const bannedWord = prompt('Please enter a word you choose to ban as it will not be included in identifying the most common word: ');
+  console.log(`The bannedWord you entered is: ${bannedWord}`);
+
+  mostCommonWord(paragraph, bannedWord);
+}
+
+main(); 
