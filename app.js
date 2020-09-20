@@ -52,8 +52,19 @@ const getWordsObject = (paragraph, banned) => {
 }
 
 const mostCommonWord = (paragraph, banned) => {
-  // get a words object from paragraph
+    // get a words object from paragraph
   words = getWordsObject(paragraph, banned);
+    // array for multiple common words
+  const mostCommonWords = []
   // iterate through whole object and reduce to find the max word
-  return Object.keys(words).reduce((a, b) => words[a] > words[b] ? a : b);
+  const mostCommonWord = Object.keys(words).reduce((a, b) => words[a] > words[b] ? a : b);
+  
+  // iterate through object to find other common words
+  for (number in words){
+    if (words[number] >= words[mostCommonWord]){
+      mostCommonWords.push(number)
+    }
+  }
+  
+  return mostCommonWords;
 }
