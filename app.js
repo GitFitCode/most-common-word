@@ -1,19 +1,17 @@
-/**
- * @param {string} paragraph
- * @param {string[]} banned
- * @return {string}
- */
+// Removes punctuation and converts paragraph to lower case
 const removePunctuationAndLowerCase = paragraph => {
   newParagraph = paragraph.replace(/[!?',;.]/g,"").toLowerCase();
   return newParagraph;
 }
 
- const paragraphToArray = paragraph => {
+// trasnforms paragraph to an array
+const paragraphToArray = paragraph => {
   // Splitting string into array
   const arr = paragraph.split(" ");
   return arr; // Return the array
 }
 
+// removes ban word from array
 const removeBanWord = (paragraphArray, ban) => {
   // setting arr to paragraph array to not mutate the original array
   let arr = paragraphArray; 
@@ -27,6 +25,7 @@ const removeBanWord = (paragraphArray, ban) => {
   return arr; // return the array
 }
 
+// uses the first three functions to trim down paragraph to a workable array
 const getWorkableArray = (paragraph, banned) => {
   // remove punctiations and lowercase
   const newParagraph = removePunctuationAndLowerCase(paragraph);
@@ -38,8 +37,9 @@ const getWorkableArray = (paragraph, banned) => {
   return bannedRemoved;
 }
 
+// converts array to word object with number of occasions for each
 const getWordsObject = (paragraph, banned) => {
-  // fetch a workable array with all lower case and punctuations stripped
+  // fetch a workable array with all lower case and punctuations stripped and banned removed
   const workableArray = getWorkableArray(paragraph, banned);
   // create empty object to populate
   const words = {};
@@ -51,6 +51,7 @@ const getWordsObject = (paragraph, banned) => {
   return words;
 }
 
+// finds all the words with the greatest number of ocassions
 const mostCommonWord = (paragraph, banned) => {
     // get a words object from paragraph
   words = getWordsObject(paragraph, banned);
@@ -65,6 +66,6 @@ const mostCommonWord = (paragraph, banned) => {
       mostCommonWords.push(number)
     }
   }
-  
+
   return mostCommonWords;
 }
