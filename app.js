@@ -14,18 +14,44 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
   - identify most frequent word and return 
   */
 
- var nDictionary = Object.create(null);
-
- function setDictionary(index, value) {
-     nDictionary[index] = value;
- }
- 
- function getDictionary(index) {
-     return nDictionary[index];
- }
-
- getDictWithFrequencies(paragraphArr, bannedWordsArr) { 
+ function getWordsWithHighestFreq(paragraphArr) { 
     var frequencyDict = new Object(); 
+
+    //Adds words from paragraph into a dictionary 
+    for (var i = 0; i < paragraphArr.length; i++) {
+      var key = paragraphArr[i]; 
+
+      if(key in frequencyDict) {
+        value = frequencyDict[key]; 
+        frequencyDict[key] = value + 1; 
+      } else { 
+        frequencyDict[key] = 1; 
+      }
+    }
+    console.log("The values in the dictioanry are the following: ", frequencyDict); 
+
+    
+    //Identify the number of the maximum occurance of a word
+    var max = 0;
+
+    for(const [key, value] of Object.entries(frequencyDict)) {
+      if(value > max) {
+        max = value;
+      }
+    }
+    console.log("The maximum occurance of a word is: ", 2)
+
+    //Parse dictionary to retrieve words of highest count 
+    var wordsOfHighFrequency = []
+
+    for(const [key, value] of Object.entries(frequencyDict)) {
+      if(value == max) {
+        wordsOfHighFrequency.push(key); 
+      }
+    }
+    console.log("The most common words are", wordsOfHighFrequency);
+
+    return wordsOfHighFrequency; 
  }
 
  /**
@@ -35,18 +61,16 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
  */
 const mostCommonWord = (paragraph, banned) => {
   var noPunctuationParagraph = paragraph.toLowerCase().replace(/(!|;|'|,|\.|\?)/g,"").trim();
+  console.log("The paragraph written in lowercase and without punctuation is the following: " ,noPunctuationParagraph);
+
   var wordsInPargrphArr = noPunctuationParagraph.split(" "); 
- 
-  var bannedArray = []; 
-  bannedArray.push(banned); 
+  wordsInPargrphArr = wordsInPargrphArr.filter(word => word != banned);
+  console.log("The array of words in paragraph without the banned word is the following: ", wordsInPargrphArr); 
 
   //method retrieves the word with the highest frequency 
-  getWordWithHighestFreq(wordsInPargrphArr,bannedArray); 
+  const mostCommonWord = getWordsWithHighestFreq(wordsInPargrphArr);
+  return mostCommonWord.values();
 
-
-  console.log(noPunctuationParagraph);
-  console.log(wordsInPargrphArr)
-  console.log(bannedArray); 
 };
 
 mostCommonWord("THE CAT IS HERE, and dog is here?", "cat"); 
