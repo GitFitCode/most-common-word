@@ -30,7 +30,6 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
     }
     //console.log("The values in the dictioanry are the following: ", frequencyDict); 
 
-    
     //Identify the number of the maximum occurance of a word
     var max = 0;
 
@@ -39,7 +38,7 @@ Words only consist of letters, never apostrophes or other punctuation symbols.
         max = value;
       }
     }
-    //console.log("The maximum occurance of a word is: ", 2)
+    //console.log("The maximum occurance of a word is: ")
 
     //Parse dictionary to retrieve words of highest count 
     var wordsOfHighFrequency = []
